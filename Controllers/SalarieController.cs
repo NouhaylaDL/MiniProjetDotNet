@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MiniProjetDotNet.Interfaces;
 using MiniProjetDotNet.Models;
+using MiniProjetDotNet.Services;
 namespace MiniProjetDotNet.Controllers
 {
     public class SalarieController : Controller
@@ -16,6 +17,12 @@ namespace MiniProjetDotNet.Controllers
         {
             var salarieService = await this._salarie.GetAll();
             return View(salarieService);
+        }
+
+        public async Task<IActionResult>Details(int id)
+        {
+           var sal = await this._salarie.GetById(id);
+            return View(sal); 
         }
         [HttpGet]
         public IActionResult Ajouter()
@@ -35,7 +42,7 @@ namespace MiniProjetDotNet.Controllers
         public async Task<IActionResult> Supprimer(int id)
         {
             var a = await this._salarie.GetById(id);
-            return View();
+            return View(a);
         }
 
         [HttpPost]
@@ -52,8 +59,8 @@ namespace MiniProjetDotNet.Controllers
         [HttpGet]
         public async Task<IActionResult>Modifier(int id)
         {
-            await this._salarie.GetById(id);
-            return View();
+           var sal = await this._salarie.GetById(id);
+            return View(sal);
         }
         
         [HttpPost]
