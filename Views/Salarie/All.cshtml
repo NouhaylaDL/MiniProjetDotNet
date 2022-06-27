@@ -8,12 +8,10 @@
   <thead class="thead-light">
     <tr>
       <th scope="col"> ID</th>
+      <th scope="col">image</th>
       <th scope="col">Nom</th>
       <th scope="col">Prenom</th>
-      <th scope="col">Date de naissance</th>
-      <th scope="col">Téléphone</th>
       <th scope="col">Email</th>
-      <th scope="col">address</th>
       <th scope="col">Détail</th>
       <th scope="col">Modifier</th>
       <th scope="col">Supprimer</th>
@@ -24,15 +22,13 @@
     {
         <tr>
             <th scope="row">@item.ID</th>
+            <td>@item.Image</td>
             <td>@item.Nom</td>
             <td>@item.Prenom</td>
-            <td>@item.DateNaiss</td>
-            <td>@item.Tel</td>
             <td>@item.Email</td>
-            <td>@item.Adress</td>
-            <td><a asp-controller="Salarie" asp-action="Details" asp-route-id ="@item.ID" ></a></td>
-            <td><a asp-controller="Salarie" asp-action="Modifier" asp-route-id ="@item.ID" ></a></td>
-            <td><a asp-controller="Salarie" asp-action="Supprimer" asp-route-id ="@item.ID" ></a></td>
+            <td><a asp-controller="Salarie" asp-action="Details" asp-route-id ="@item.ID" >Détail</a></td>
+            <td><a asp-controller="Salarie" asp-action="Modifier" asp-route-id ="@item.ID" >Modifier</a></td>
+            <td><a asp-controller="Salarie" asp-action="Supprimer" asp-route-id ="@item.ID" >Supprimer</a></td>
         </tr>
     }
   </tbody>

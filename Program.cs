@@ -1,6 +1,8 @@
 using MiniProjetDotNet.Data;
 using Microsoft.EntityFrameworkCore;
-
+using MiniProjetDotNet.Interfaces;
+using MiniProjetDotNet.Repository;
+using MiniProjetDotNet.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("WebApiDatabase"))
 );
+
+builder.Services.AddScoped<ISalarieRepository,SalarieRepository>();
+builder.Services.AddScoped<ISalarieService,SalarieService>();
 
 var app = builder.Build();
 
@@ -30,6 +35,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Salarie}/{action=All}/{id?}");
 
 app.Run();
